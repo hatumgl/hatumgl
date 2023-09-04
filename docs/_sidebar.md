@@ -4,9 +4,10 @@
   - [spring](Framework/spring.md)
   - [spring mvc](Framework/springmvc.md)
   - [ssm整合](Framework/ssm.md)
-  - mybatis
-  - mybatis plus
-  - spring boot
+  - [mybatis](Framework/mybatis.md)
+  - [mybatis plus](Framework/mybatisplus)
+  - [spring boot](Framework/springboot.md)
+  - [spring boot 简洁版](Framework/springboot简洁版.md)
   - spring security
   - maven
   - gradle
