@@ -1,7 +1,7 @@
 - 开发框架
 
-  - [javaweb](Framework/1javaweb.md)
-  - spring
+  - [javaweb](Framework/javaweb.md)
+  - [spring](Framework/spring.md)
   - spring mvc
   - mybatis
   - mybatis plus
