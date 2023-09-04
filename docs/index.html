@@ -16,11 +16,12 @@
       repo: 'https://hatu.gitee.io/',
 	  loadSidebar: true,
 	  coverpage: true,
+    logo: '/_media/icon.svg',
      // 全文搜索
      search: {
       paths: 'auto',
-      placeholder: 'Type to search',
-      noData: 'No Results!',
+      placeholder: '搜索一下',
+      noData: '没有找到~~',
       depth: 6
     },
     // 字数统计
@@ -34,6 +35,10 @@
 
     }
   </script>
+
+  <!-- 全文搜索 -->
+  <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script> -->
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <!-- 侧边栏折叠 -->
 <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <!-- 字数统计 -->
