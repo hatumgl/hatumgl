@@ -44,4 +44,8 @@
 
 - [待处理的问题](question/待解决的问题.md)
 
+- 技术技巧
+
+  - [idea隐藏文件](skill/idea隐藏文件.md)
+  
   
