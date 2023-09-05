@@ -7,7 +7,11 @@
   - [mybatis](Framework/mybatis.md)
   - [mybatis plus](Framework/mybatisplus)
   - [spring boot](Framework/springboot.md)
-  - [spring boot 简洁版](Framework/springboot简洁版.md)
+  - spring boot 简洁版
+    - [基础篇](Framework/springboot基础篇.md)
+    - [运维实用篇](Framework/springboot运维实用篇.md)
+    - [开发实用篇](Framework/springboot开发实用篇.md)
+    - [原理篇](Framework/springboot原理篇.md)
   - spring security
   - maven
   - gradle
