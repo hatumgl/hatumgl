@@ -1,53 +1,14 @@
-通过项目一的开发大家应该能发现，单表的CRUD功能代码重复度很高，也没有什么难度。而这部分代码量往往比较大，开发起来比较费时。
-因此，目前企业中都会使用一些组件来简化或省略单表的CRUD开发工作。目前在国内使用较多的一个组件就是MybatisPlus.
-官方网站如下：
+MybatisPlus
+
 [简介 | MyBatis-Plus](https://www.baomidou.com/pages/24112f/)
 
-当然，MybatisPlus不仅仅可以简化单表操作，而且还对Mybatis的功能有很多的增强。可以让我们的开发更加的简单，高效。
-
-通过今天的学习，我们要达成下面的目标：
-
-- 能利用MybatisPlus实现基本的CRUD
-- 会使用条件构建造构建查询和更新语句
-- 会使用MybatisPlus中的常用注解
-- 会使用MybatisPlus处理枚举、JSON类型字段
-- 会使用MybatisPlus实现分页
+> - 能利用MybatisPlus实现基本的CRUD
+> - 会使用条件构建造构建查询和更新语句
+> - 会使用MybatisPlus中的常用注解
+> - 会使用MybatisPlus处理枚举、JSON类型字段
+> - 会使用MybatisPlus实现分页
 
 # 1.快速入门
-
-为了方便测试，我们先创建一个新的项目，并准备一些基础数据。
-
-## 1.1.环境准备
-
-复制课前资料提供好的一个项目到你的工作空间（不要包含空格和特殊字符）：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1690549162377-6734abfc-fd18-450c-8eb0-818dcd72efcc.png#averageHue=%23f8f8f7&clientId=u2c518acf-c294-4&from=paste&height=148&id=u4d10ed30&originHeight=183&originWidth=720&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=15182&status=done&style=none&taskId=u37883064-c464-4dc1-b39b-6f25f0261ab&title=&width=580.8403175148742)
-然后用你的IDEA工具打开，项目结构如下：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1690549374380-1dea03e4-2d5c-40bf-a374-f549b7f435c3.png#averageHue=%23f9fbf8&clientId=u2c518acf-c294-4&from=paste&height=428&id=u406a9b35&originHeight=530&originWidth=906&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=55561&status=done&style=none&taskId=u8b6bd1c1-6784-43c0-8fdd-d4c95bd9244&title=&width=730.8907328728834)
-注意配置一下项目的JDK版本为JDK11。首先点击项目结构设置：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1690549414479-678e1294-1dca-46e1-961d-e795774eb9e3.png#averageHue=%23d6d5d5&clientId=u2c518acf-c294-4&from=paste&height=141&id=u66f4b322&originHeight=175&originWidth=807&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=20693&status=done&style=none&taskId=u95335ac0-8379-42f7-86db-ddb3a0143bf&title=&width=651.0251892145882)
-在弹窗中配置JDK：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1690549479271-32f3a036-bcab-49fe-82fc-e506cb11e5bf.png#averageHue=%23efeceb&clientId=u2c518acf-c294-4&from=paste&height=483&id=uae1617bf&originHeight=599&originWidth=1201&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=59474&status=done&style=none&taskId=u61b46c52-0edb-437e-8e84-b6193345ed2&title=&width=968.8739185213387)
-
-接下来，要导入两张表，在课前资料中已经提供了SQL文件：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688263923535-b5920196-ff94-47cf-b480-5dad646deea4.png#averageHue=%23f9f8f8&clientId=uba0f15c0-624d-4&from=paste&height=147&id=uf36fae65&originHeight=182&originWidth=825&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=15153&status=done&style=none&taskId=u586ca2ff-9e1a-4538-bd7a-75263bd0a62&title=&width=665.54619715246)
-对应的数据库表结构如下：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1690549558360-050c2647-786b-45fa-849f-ae742060e836.png#averageHue=%23f9f6f6&clientId=u2c518acf-c294-4&from=paste&height=247&id=u89b9bd33&originHeight=306&originWidth=673&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=19385&status=done&style=none&taskId=udae7ae28-4b1e-4027-a39b-9458dd0adeb&title=&width=542.9243523437643)
-
-最后，在`application.yaml`中修改jdbc参数为你自己的数据库参数：
-
-```yaml
-spring:
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/mp?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: MySQL123
-logging:
-  level:
-    com.itheima: debug
-  pattern:
-    dateformat: HH:mm:ss
-```
 
 ## 1.2.快速开始
 
@@ -98,11 +59,9 @@ MybatisPlus提供了starter，实现了自动Mybatis以及MybatisPlus的自动�
 
 ### 1.2.2.定义Mapper
 
-为了简化单表CRUD，MybatisPlus提供了一个基础的`BaseMapper`接口，其中已经实现了单表的CRUD：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688093324156-758f4f9c-5f11-4d3d-a9fe-be1b28f2985f.png#averageHue=%23faf9f7&clientId=uea9a4aab-c071-4&from=paste&height=530&id=ubc9c22dc&originHeight=657&originWidth=812&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=67068&status=done&style=none&taskId=u912ba945-5c8a-43d4-a8da-993f209b39b&title=&width=655.0588025306637)
+为了简化单表CRUD，MybatisPlus提供了一个基础的`BaseMapper`接口，其中已经实现了单表的CRUD：![image-20230907090749805](images/image-20230907090749805.png)
+
 因此我们自定义的Mapper只要实现了这个`BaseMapper`，就无需自己实现单表CRUD了。
-修改mp-demo中的`com.itheima.mp.mapper`包下的`UserMapper`接口，让其集成`BaseMapper`：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688093277291-abc28af9-6ff9-437c-8bab-b5576977c0a1.png#averageHue=%23f5f8f4&clientId=uea9a4aab-c071-4&from=paste&height=258&id=uab1f6c67&originHeight=320&originWidth=911&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=51361&status=done&style=none&taskId=ub70da7d8-95e3-43ba-badf-9d73ae2bdb1&title=&width=734.9243461889589)
 代码如下：
 
 ```java
@@ -115,91 +74,11 @@ public interface UserMapper extends BaseMapper<User> {
 }
 ```
 
-### 1.2.3.测试
 
-新建一个测试类，编写几个单元测试，测试基本的CRUD功能：
-
-```java
-package com.itheima.mp.mapper;
-
-import com.itheima.mp.domain.po.User;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-@SpringBootTest
-class UserMapperTest {
-
-    @Autowired
-    private UserMapper userMapper;
-
-    @Test
-    void testInsert() {
-        User user = new User();
-        user.setId(5L);
-        user.setUsername("Lucy");
-        user.setPassword("123");
-        user.setPhone("18688990011");
-        user.setBalance(200);
-        user.setInfo("{\"age\": 24, \"intro\": \"英文老师\", \"gender\": \"female\"}");
-        user.setCreateTime(LocalDateTime.now());
-        user.setUpdateTime(LocalDateTime.now());
-        userMapper.insert(user);
-    }
-
-    @Test
-    void testSelectById() {
-        User user = userMapper.selectById(5L);
-        System.out.println("user = " + user);
-    }
-
-    @Test
-    void testSelectByIds() {
-        List<User> users = userMapper.selectBatchIds(List.of(1L, 2L, 3L, 4L, 5L));
-        users.forEach(System.out::println);
-    }
-
-    @Test
-    void testUpdateById() {
-        User user = new User();
-        user.setId(5L);
-        user.setBalance(20000);
-        userMapper.updateById(user);
-    }
-
-    @Test
-    void testDelete() {
-        userMapper.deleteById(5L);
-    }
-}
-```
-
-可以看到，在运行过程中打印出的SQL日志，非常标准：
-
-```java
-11:05:01  INFO 15524 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-11:05:02  INFO 15524 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-11:05:02 DEBUG 15524 --- [           main] c.i.mp.mapper.UserMapper.selectById      : ==>  Preparing: SELECT id,username,password,phone,info,status,balance,create_time,update_time FROM user WHERE id=?
-11:05:02 DEBUG 15524 --- [           main] c.i.mp.mapper.UserMapper.selectById      : ==> Parameters: 5(Long)
-11:05:02 DEBUG 15524 --- [           main] c.i.mp.mapper.UserMapper.selectById      : <==      Total: 1
-user = User(id=5, username=Lucy, password=123, phone=18688990011, info={"age": 21}, status=1, balance=20000, createTime=Fri Jun 30 11:02:30 CST 2023, updateTime=Fri Jun 30 11:02:30 CST 2023)
-```
-
-只需要继承BaseMapper就能省去所有的单表CRUD，是不是非常简单！
 
 ## 1.3.常见注解
 
-在刚刚的入门案例中，我们仅仅引入了依赖，继承了BaseMapper就能使用MybatisPlus，非常简单。但是问题来了：
-MybatisPlus如何知道我们要查询的是哪张表？表中有哪些字段呢？
-
-大家回忆一下，UserMapper在继承BaseMapper的时候指定了一个泛型：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688105665377-c547dd6c-99cd-4f25-bbfc-24ec2306bdb2.png#averageHue=%23f9fbf7&clientId=uea9a4aab-c071-4&from=paste&height=232&id=u401ba829&originHeight=288&originWidth=773&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=42644&status=done&style=none&taskId=ud4b07c99-d3ef-4e36-be8c-e0efad600f6&title=&width=623.5966186652746)
-泛型中的User就是与数据库对应的PO.
-
-MybatisPlus就是根据PO实体的信息来推断出表的信息，从而生成SQL的。默认情况下：
+MybatisPlus如何知道我们要查询的是哪张表？表中有哪些字段呢？UserMapper在继承BaseMapper的时候指定了一个`泛型`，泛型中的User就是与数据库对应的PO。MybatisPlus就是根据PO实体的信息来推断出表的信息，从而生成SQL的。默认情况下：
 
 - MybatisPlus会把PO实体的类名驼峰转下划线作为表名
 - MybatisPlus会把PO实体的所有变量名驼峰转下划线作为表的字段名，并根据变量类型推断字段类型
@@ -208,8 +87,6 @@ MybatisPlus就是根据PO实体的信息来推断出表的信息，从而生成S
 但很多情况下，默认的实现与实际场景不符，因此MybatisPlus提供了一些注解便于我们声明表信息。
 
 ### 1.3.1.@TableName
-
-说明：
 
 > - 描述：表名注解，标识实体类对应的表
 > - 使用位置：实体类
@@ -237,8 +114,6 @@ TableName注解除了指定表名以外，还可以指定很多其它属性：
 
 
 ### 1.3.2.@TableId
-
-说明：
 
 > - 描述：主键注解，标识实体类中的主键字段
 > - 使用位置：实体类的主键字段
@@ -282,8 +157,6 @@ public class User {
 - `ASSIGN_ID`：雪花算法生成`Long`类型的全局唯一id，这是默认的ID策略
 
 ### 1.3.3.@TableField
-
-说明：
 
 > 描述：普通字段注解
 
@@ -360,50 +233,27 @@ mybatis-plus:
 可以看到默认值是`classpath*:/mapper/**/*.xml`，也就是说我们只要把mapper.xml文件放置这个目录下就一定会被加载。
 
 例如，我们新建一个`UserMapper.xml`文件：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1689585147148-62043114-9df1-45ac-b17f-6dc6cf534fca.png#averageHue=%23f9fbf8&clientId=u7cb3ff01-563a-4&from=paste&height=307&id=uc0665a70&originHeight=343&originWidth=754&originalType=binary&ratio=1.115625023841858&rotation=0&showTitle=false&size=34429&status=done&style=none&taskId=u0ab25e57-e931-46b8-96a1-3e0ec760eb3&title=&width=675.8543272931112)
-然后在其中定义一个方法：
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itheima.mp.mapper.UserMapper">
-
-    <select id="queryById" resultType="User">
-        SELECT * FROM user WHERE id = #{id}
-    </select>
-</mapper>
-```
-
-然后在测试类`UserMapperTest`中测试该方法：
-
-```java
-@Test
-void testQuery() {
-    User user = userMapper.queryById(1L);
-    System.out.println("user = " + user);
-}
-```
+![image-20230907090832987](images/image-20230907090832987.png)
 
 
 # 2.核心功能
 
-刚才的案例中都是以id为条件的简单CRUD，一些复杂条件的SQL语句就要用到一些更高级的功能了。
+
 
 ## 2.1.条件构造器
 
 除了新增以外，修改、删除、查询的SQL语句都需要指定where条件。因此BaseMapper中提供的相关方法除了以`id`作为`where`条件以外，还支持更加复杂的`where`条件。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688117068580-3abcd2bb-fbf8-4430-8f2a-dcf130f05f70.png#averageHue=%23faf4ef&clientId=uea9a4aab-c071-4&from=paste&height=312&id=ua83b74d8&originHeight=387&originWidth=864&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=74950&status=done&style=none&taskId=uf547d320-6fa6-4d9c-a531-25573a538a5&title=&width=697.008381017849)
-参数中的`Wrapper`就是条件构造的抽象类，其下有很多默认实现，继承关系如图：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688117775304-84915c47-d2d9-49f4-90fb-99270d9353c7.png#averageHue=%23f7faf2&clientId=uea9a4aab-c071-4&from=paste&height=407&id=uf66fc47c&originHeight=504&originWidth=1212&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=60824&status=done&style=none&taskId=u14c0b946-02c2-4631-bd09-d2459214134&title=&width=977.7478678167049)
-
 `Wrapper`的子类`AbstractWrapper`提供了where中包含的所有条件构造方法：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688117979051-e388959d-86ba-4aa9-9d57-cd9fd84fc00f.png#averageHue=%23f9f8f6&clientId=uea9a4aab-c071-4&from=paste&height=651&id=ua30f8ba3&originHeight=807&originWidth=836&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=103972&status=done&style=none&taskId=u4c610b14-da63-46ae-8a13-08672c8643e&title=&width=674.4201464478261)
-而QueryWrapper在AbstractWrapper的基础上拓展了一个select方法，允许指定查询字段：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688118137162-ffcf1fe3-57cb-46ef-b069-9d576e9f0184.png#averageHue=%23e2c889&clientId=uea9a4aab-c071-4&from=paste&height=127&id=ue7075211&originHeight=158&originWidth=821&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=23389&status=done&style=none&taskId=ua0264d53-8522-4608-97e1-d30b91f878c&title=&width=662.3193064995996)
-而UpdateWrapper在AbstractWrapper的基础上拓展了一个set方法，允许指定SQL中的SET部分：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688118200333-0c97025d-1bd9-4f3b-a486-7e6a1cf3604d.png#averageHue=%23e5ca91&clientId=uea9a4aab-c071-4&from=paste&height=126&id=uad24f810&originHeight=156&originWidth=825&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=22371&status=done&style=none&taskId=uacb8416a-d529-44e1-9a64-84c0ac60765&title=&width=665.54619715246)
 
-接下来，我们就来看看如何利用`Wrapper`实现复杂查询。
+![image-20230907091709374](images/image-20230907091709374.png)
+
+而QueryWrapper在AbstractWrapper的基础上拓展了一个select方法，允许指定查询字段：
+
+![image-20230907091948936](images/image-20230907091948936.png)
+
+而UpdateWrapper在AbstractWrapper的基础上拓展了一个set方法，允许指定SQL中的SET部分：
+
+![image-20230907092010247](images/image-20230907092010247.png)
 
 ### 2.1.1.QueryWrapper
 
@@ -495,12 +345,7 @@ void testLambdaQueryWrapper() {
 
 ## 2.2.自定义SQL
 
-在演示UpdateWrapper的案例中，我们在代码中编写了更新的SQL语句：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688133292238-a0f07be7-b115-4970-95d0-2f36bf68cc19.png#averageHue=%23f8fbf6&clientId=uea9a4aab-c071-4&from=paste&height=362&id=u502de218&originHeight=449&originWidth=1067&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=98085&status=done&style=none&taskId=u903bfb55-ce92-4788-af0e-33eeeabe260&title=&width=860.773081650515)
-这种写法在某些企业也是不允许的，因为SQL语句最好都维护在持久层，而不是业务层。就当前案例来说，由于条件是in语句，只能将SQL写在Mapper.xml文件，利用foreach来生成动态SQL。
-这实在是太麻烦了。假如查询条件更复杂，动态SQL的编写也会更加复杂。
-
-所以，MybatisPlus提供了自定义SQL功能，可以让我们利用Wrapper生成查询条件，再结合Mapper.xml编写SQL
+MybatisPlus提供了自定义SQL功能，可以让我们利用Wrapper生成查询条件，再结合Mapper.xml编写SQL
 
 ### 2.2.1.基本用法
 
@@ -531,7 +376,7 @@ public interface UserMapper extends BaseMapper<User> {
 
 ### 2.2.2.多表关联
 
-理论上来将MyBatisPlus是不支持多表查询的，不过我们可以利用Wrapper中自定义条件结合自定义SQL来实现多表查询的效果。
+理论上来讲MyBatisPlus是不支持多表查询的，不过我们可以利用Wrapper中自定义条件结合自定义SQL来实现多表查询的效果。
 例如，我们要查询出所有收货地址在北京的并且用户id在1、2、4之中的用户
 要是自己基于mybatis实现SQL，大概是这样的：
 
@@ -597,9 +442,8 @@ MybatisPlus不仅提供了BaseMapper，还提供了通用的Service接口及默�
 
 ### 2.3.1.CRUD
 
-我们先俩看下基本的CRUD接口。
-**新增**：
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/27967491/1688175852334-462e40db-e880-4131-adaa-5fc14360ff73.png#averageHue=%23f9f8f5&clientId=u9097aa82-6411-4&from=paste&height=235&id=u06631bbd&originHeight=291&originWidth=890&originalType=binary&ratio=1.2395833730697632&rotation=0&showTitle=false&size=35948&status=done&style=none&taskId=u045be908-a24b-4312-b024-0a2376b2e00&title=&width=717.9831702614417)
+我们先看下基本的CRUD接口。
+**新增**：![image-20230907092852176](images/image-20230907092852176.png)
 
 - `save`是新增单个元素
 - `saveBatch`是批量新增
